@@ -27,11 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTags = document.getElementById('modalTags');
   const modalGithubLink = document.getElementById('modalGithubLink');
   const modalLiveLink = document.getElementById('modalLiveLink');
-  
-  // Email Copy & Toast
-  const copyEmailBtn = document.getElementById('copyEmailBtn');
-  const toastNotice = document.getElementById('toastNotice');
-
   /* --------------------------------------------------------------------------
      1. INITIALIZE COMPONENTS
      -------------------------------------------------------------------------- */
@@ -44,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTimeline();
   initSearchAndFilters();
   initModalListeners();
-  initEmailCopy();
 
   /* --------------------------------------------------------------------------
      2. HEADER & MOBILE NAV
@@ -376,37 +370,4 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
-  /* --------------------------------------------------------------------------
-     10. EMAIL COPY & TOAST
-     -------------------------------------------------------------------------- */
-  function initEmailCopy() {
-    if (!copyEmailBtn) return;
-
-    copyEmailBtn.addEventListener('click', () => {
-      const email = PORTFOLIO_DATA.profile.email;
-      navigator.clipboard.writeText(email).then(() => {
-        showToast('¡Correo copiado al portapapeles!');
-      }).catch(() => {
-        // Fallback
-        const temp = document.createElement('textarea');
-        temp.value = email;
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand('copy');
-        document.body.removeChild(temp);
-        showToast('¡Correo copiado al portapapeles!');
-      });
-    });
-  }
-
-  function showToast(message) {
-    if (!toastNotice) return;
-    const toastText = toastNotice.querySelector('.toast-text');
-    if (toastText) toastText.textContent = message;
-    
-    toastNotice.classList.add('show');
-    setTimeout(() => {
-      toastNotice.classList.remove('show');
-    }, 3200);
-  }
 });

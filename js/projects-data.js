@@ -7,7 +7,6 @@ const PORTFOLIO_DATA = {
     role: "Desarrollador Web & UI Enthusiast",
     company: "Grupo Petroil",
     location: "Mazatlán, Sinaloa, México",
-    email: "joseluciopcx@gmail.com",
     github: "https://github.com/JoseLucioPC",
     githubUsername: "JoseLucioPC",
     avatar: "https://avatars.githubusercontent.com/u/58183741?v=4",
